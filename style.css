@@ -74,7 +74,7 @@ filter:drop-shadow( 2px 2px 10px black);
     gap:10px
 }
 .prompt-area input{
-    width: 50%;
+    width: 40%;
     height: 80px;
     background-color: black;
     outline: none;
@@ -86,7 +86,7 @@ filter:drop-shadow( 2px 2px 10px black);
     box-shadow: 2px 2px 10px black;
 }
 .prompt-area button{
-    width: 70px;
+    width: 60px;
     height: 70px;
     border-radius: 50%;
     background-color: black;
@@ -111,6 +111,17 @@ filter:drop-shadow( 2px 2px 10px black);
     align-items: center;
     justify-content: center;
 }
+.project-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px 0;
+    background-color: #e0f7fa;
+    color: #00695c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
 @media (max-width:600px) {
     .user-chat-box{
         width: 80%;
@@ -120,4 +131,42 @@ filter:drop-shadow( 2px 2px 10px black);
         width: 80%;
     }
     
+}
+.project-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.project-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 15px 0;
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+}
+.floating-box {
+    position: fixed;
+    bottom: 50px;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
 }

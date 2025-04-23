@@ -16,34 +16,45 @@ let user={
 }
 
 async function generateResponse(aiChatBox) {
+    let text = aiChatBox.querySelector(".ai-chat-area");
 
-let text=aiChatBox.querySelector(".ai-chat-area")
-    let RequestOption={
-        method:"POST",
-        headers:{'Content-Type' : 'application/json'},
-        body:JSON.stringify({
-            "contents":[
-                {"parts":[{text:user.message},(user.file.data?[{inline_data:user.file}]:[])
-
-                ]
-            }]
+    let RequestOption = {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            contents: [
+                {
+                    role: "user",
+                    parts: [
+                        {
+                            text: "You are an Energy Advisor. Answer only questions related to energy, including renewable sources (solar, wind, hydro, geothermal) and non-renewable sources (coal, oil, natural gas, nuclear). If a question is outside the energy domain, politely say that you're here to assist only with energy-related topics."
+                        }
+                    ]
+                },
+                {
+                    role: "user",
+                    parts: [
+                        { text: user.message },
+                        ...(user.file.data ? [{ inline_data: user.file }] : [])
+                    ]
+                }
+            ]
         })
-    }
-    try{
-        let response= await fetch(Api_Url,RequestOption)
-        let data=await response.json()
-       let apiResponse=data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g,"$1").trim()
-        text.innerHTML=apiResponse
-    }
-    catch(error){
-        console.log(error);
+    };
 
-    }
-    finally{
-        chatContainer.scrollTo({top:chatContainer.scrollHeight,behavior:"smooth"})
-        image.src=`img.svg`
-        image.classList.remove("choose")
-        user.file={}
+    try {
+        let response = await fetch(Api_Url, RequestOption);
+        let data = await response.json();
+        let apiResponse = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, "$1").trim();
+        text.innerHTML = apiResponse;
+    } catch (error) {
+        console.log(error);
+        text.innerHTML = "Sorry, something went wrong. Please try again.";
+    } finally {
+        chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" });
+        image.src = `img.svg`;
+        image.classList.remove("choose");
+        user.file = {};
     }
 }
 
